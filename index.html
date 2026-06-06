@@ -5,20 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>НейроПрактика — практикум по нейросетям для малого бизнеса</title>
 <style>
-:root{--g:#252326;--gs:#3A363D;--f:#D91E8F;--fd:#C2187A;--fl:#F7D7EA;--cr:#F7F1EA;--lv:#E8E3EE;--wh:#fff}
+:root{--g:#252326;--gs:#3A363D;--f:#D91E8F;--fd:#C2187A;--fl:#F7D7EA;--cr:#F7F1EA;--lv:#E8E3EE}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cr);color:var(--g);line-height:1.6;overflow-x:hidden}
 
 /* АНИМАЦИИ */
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
-@keyframes fadeRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
-.anim{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.anim{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
 .anim.show{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
-.hero>div:first-child{animation:fadeLeft .8s ease .1s both}
-.hero-card{animation:fadeRight .8s ease .2s both}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:100;background:var(--cr);border-bottom:1px solid var(--lv);padding:14px 40px;display:flex;justify-content:space-between;align-items:center}
@@ -30,29 +25,35 @@ nav{position:sticky;top:0;z-index:100;background:var(--cr);border-bottom:1px sol
 .nav-btn{background:var(--f);color:#fff;padding:10px 24px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:700;transition:background .2s}
 .nav-btn:hover{background:var(--fd)}
 
-/* HERO */
-.hero{max-width:1200px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center}
-.hero-tag{display:inline-block;background:var(--fl);color:var(--fd);padding:6px 18px;border-radius:50px;font-size:13px;font-weight:700;margin-bottom:20px;letter-spacing:.03em}
-.hero h1{font-size:50px;font-weight:800;line-height:1.1;margin-bottom:16px}
-.hero h1 em{color:var(--f);font-style:normal}
-.hero-sub{font-size:18px;color:var(--gs);margin-bottom:32px;max-width:480px}
-.hero-stats{display:flex;gap:32px;margin-bottom:36px}
-.hero-stat strong{display:block;font-size:32px;font-weight:800;color:var(--f)}
-.hero-stat span{font-size:12px;color:var(--gs)}
-.btn{background:var(--f);color:#fff;padding:16px 40px;border-radius:50px;font-size:17px;font-weight:700;text-decoration:none;display:inline-block;transition:all .2s;box-shadow:0 4px 20px rgba(217,30,143,.25)}
-.btn:hover{background:var(--fd);transform:translateY(-2px);box-shadow:0 8px 28px rgba(217,30,143,.35)}
-.hero-card{border-radius:28px;overflow:hidden;background:var(--lv)}
-.hero-card img{width:100%;height:480px;object-fit:cover;object-position:top center;display:block}
+/* HERO — DESKTOP */
+.hero-wrap{background:var(--cr)}
+.hero{max-width:1200px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1fr 420px;grid-template-rows:auto auto;grid-template-areas:"top card""bottom card";gap:0 60px}
+.hero-top{grid-area:top;padding-bottom:24px}
+.hero-bottom{grid-area:bottom;display:flex;flex-direction:column;justify-content:flex-end;gap:16px}
+.hero-card{grid-area:card;border-radius:28px;overflow:hidden;background:var(--lv);align-self:stretch}
+.hero-card img{width:100%;height:100%;min-height:480px;object-fit:cover;object-position:top center;display:block}
 .hero-badge{background:#fff;padding:14px 20px}
 .hero-badge strong{font-size:15px;color:var(--g);display:block}
 .hero-badge span{font-size:12px;color:var(--fd);font-weight:600}
+
+.hero-tag{display:inline-block;background:var(--fl);color:var(--fd);padding:6px 18px;border-radius:50px;font-size:13px;font-weight:700;margin-bottom:20px;letter-spacing:.03em}
+.hero h1{font-size:50px;font-weight:800;line-height:1.1;margin-bottom:16px}
+.hero h1 em{color:var(--f);font-style:normal}
+.hero-sub{font-size:17px;color:var(--gs);max-width:480px;line-height:1.6}
+.hero-stats{display:flex;gap:24px;flex-wrap:wrap}
+.hero-stat strong{display:block;font-size:22px;font-weight:800;color:var(--g)}
+.hero-stat span{font-size:12px;color:var(--gs)}
+.hero-date{font-size:14px;color:var(--gs)}
+.hero-date strong{color:var(--g)}
+.btn{background:var(--f);color:#fff;padding:16px 40px;border-radius:50px;font-size:17px;font-weight:700;text-decoration:none;display:inline-block;transition:all .2s;box-shadow:0 4px 20px rgba(217,30,143,.25);align-self:flex-start}
+.btn:hover{background:var(--fd);transform:translateY(-2px);box-shadow:0 8px 28px rgba(217,30,143,.35)}
 
 /* СЕКЦИИ */
 .sec{padding:80px 40px}
 .sec-inner{max-width:1200px;margin:0 auto}
 .sec-tag{display:inline-block;background:var(--fl);color:var(--fd);padding:5px 14px;border-radius:50px;font-size:12px;font-weight:700;margin-bottom:14px;letter-spacing:.04em;text-transform:uppercase}
 .sec h2{font-size:38px;font-weight:800;margin-bottom:48px;line-height:1.2}
-.sec h2 em{color:var(--f);font-style:normal}
+.sec h2 em,.results-bg h2 em{color:var(--f);font-style:normal}
 
 /* БОЛИ */
 .pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -131,24 +132,67 @@ nav{position:sticky;top:0;z-index:100;background:var(--cr);border-bottom:1px sol
 footer{background:var(--g);color:rgba(255,255,255,.5);text-align:center;padding:28px 40px;font-size:13px}
 footer span{color:var(--f)}
 
-/* МОБИЛЬНЫЙ */
+/* ========= МОБИЛЬНЫЙ ========= */
 @media(max-width:900px){
   nav{padding:14px 20px}
   .nav-links{display:none}
-  .hero{grid-template-columns:1fr;padding:40px 20px;gap:32px}
-  .hero h1{font-size:34px}
-  .hero-card img{height:auto;aspect-ratio:4/5;object-position:center 20%}
+
+  /* Hero мобильный — всё на одном экране */
+  .hero{
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto auto;
+    grid-template-areas:"top""card""bottom";
+    padding:20px 20px 28px;
+    gap:0;
+  }
+  .hero-top{padding-bottom:16px}
+  .hero h1{font-size:28px;margin-bottom:10px}
+  .hero-tag{margin-bottom:12px;font-size:12px}
+  .hero-sub{display:none} /* скрываем подзаголовок — не влезает */
+
+  /* Фото на мобильном */
+  .hero-card{border-radius:20px;margin-bottom:16px}
+  .hero-card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    object-position:50% 18%;
+    min-height:unset;
+  }
+  .hero-badge{padding:10px 16px}
+  .hero-badge strong{font-size:13px}
+  .hero-badge span{font-size:11px}
+
+  /* Нижний блок */
+  .hero-bottom{gap:12px}
+  .hero-stats{gap:16px}
+  .hero-stat strong{font-size:18px}
+  .hero-stat span{font-size:11px}
+  .hero-date{font-size:13px}
+  .btn{
+    width:100%;
+    text-align:center;
+    padding:16px 24px;
+    font-size:16px;
+    border-radius:50px;
+    align-self:stretch;
+  }
+
+  /* Остальные секции */
+  .sec,.program-bg,.format-bg,.author-sec,.results-bg{padding:52px 20px}
+  .sec h2,.results-bg h2{font-size:26px;margin-bottom:28px}
   .pain-grid,.results-grid,.format-grid{grid-template-columns:1fr}
-  .author-inner{grid-template-columns:1fr;gap:36px}
-  .author-card img{height:auto;aspect-ratio:4/5;object-position:top center}
-  .sec,.program-bg,.format-bg,.author-sec,.results-bg{padding:56px 20px}
-  .sec h2,.results-bg h2{font-size:28px;margin-bottom:32px}
-  .cta-sec{padding:72px 20px}
-  .cta-sec h2{font-size:28px}
+  .author-inner{grid-template-columns:1fr;gap:32px}
+  .author-card img{height:auto;aspect-ratio:4/5;object-position:50% 15%}
   .day-tabs{flex-direction:column}
   .day-tab{text-align:center}
-  .lesson-body{padding:0 16px 20px 16px}
-  .author-stats{gap:20px}
+  .lesson-hd{padding:16px}
+  .lesson-body{padding:0 16px 20px}
+  .lesson-title{font-size:15px}
+  .cta-sec{padding:64px 20px}
+  .cta-sec h2{font-size:26px}
+  .author-stats{gap:16px}
+  .a-stat strong{font-size:26px}
 }
 </style>
 </head>
@@ -164,19 +208,12 @@ footer span{color:var(--f)}
   <a href="http://clck.ru/3TzcM6" target="_blank" class="nav-btn">Записаться</a>
 </nav>
 
-<section style="background:var(--cr)">
+<div class="hero-wrap">
   <div class="hero">
-    <div>
+    <div class="hero-top">
       <span class="hero-tag">Практикум для малого бизнеса</span>
       <h1>Нейросети,<br>которые <em>работают</em><br>на ваш бизнес</h1>
       <p class="hero-sub">Не теория. Не обещания. Два дня практики — и у вас есть настроенный ИИ-помощник, готовые материалы и понимание, что делать дальше.</p>
-      <div class="hero-stats">
-        <div class="hero-stat"><strong>2 дня</strong><span>по 4 часа</span></div>
-        <div class="hero-stat"><strong>11:00–15:00</strong><span>живой практикум</span></div>
-        <div class="hero-stat"><strong>100%</strong><span>на ваших задачах</span></div>
-      </div>
-      <p style="font-size:14px;color:var(--gs);margin-bottom:16px">📅 Дата проведения: <strong style="color:var(--g)">16–17 июня 2026</strong></p>
-      <a href="http://clck.ru/3TzcM6" target="_blank" class="btn">Хочу на практикум →</a>
     </div>
     <div class="hero-card">
       <img src="https://2801155-png.github.io/.neiro-praktika/14.jpeg" alt="Наталья Руцкая">
@@ -185,8 +222,17 @@ footer span{color:var(--f)}
         <span>Маркетолог-практик, 20 лет в бизнесе</span>
       </div>
     </div>
+    <div class="hero-bottom">
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>2 дня</strong><span>по 4 часа</span></div>
+        <div class="hero-stat"><strong>11:00–15:00</strong><span>живой практикум</span></div>
+        <div class="hero-stat"><strong>100%</strong><span>на ваших задачах</span></div>
+      </div>
+      <p class="hero-date">📅 Дата проведения: <strong>16–17 июня 2026</strong></p>
+      <a href="http://clck.ru/3TzcM6" target="_blank" class="btn">Хочу на практикум →</a>
+    </div>
   </div>
-</section>
+</div>
 
 <section class="sec" id="for-whom">
   <div class="sec-inner">
@@ -222,17 +268,17 @@ footer span{color:var(--f)}
       <button class="day-tab" onclick="switchDay(2)">День 2 — ИИ-ассистент и внедрение</button>
     </div>
     <div class="day-panel active" id="day1">
-      <div class="lesson anim d1" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">1</div><div class="lesson-title">Нейросети для бизнеса: с чего начать</div><span class="lesson-time">11:00 – 11:50</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Что такое нейросети — простыми словами</li><li>Почему ИИ — помощник, а не «волшебная кнопка»</li><li>Как ИИ помогает малому бизнесу: контент, маркетинг, анализ</li></ul><div class="practice-box"><strong>Мини-практика:</strong> заполняем анкету о своём бизнесе и задачах</div></div></div>
-      <div class="lesson anim d2" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">2</div><div class="lesson-title">Выбираем и настраиваем ИИ</div><span class="lesson-time">12:00 – 12:50</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Какие сервисы работают в России — бесплатные и платные</li><li>Настройка рабочих инструментов (2 нейросети на выбор)</li><li>Принцип: «ИИ помогает работать, а не создаёт ещё одну работу»</li></ul><div class="practice-box"><strong>Практика:</strong> настраиваем нейросети под свои задачи</div></div></div>
-      <div class="lesson anim d3" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">3</div><div class="lesson-title">Как найти задачи для ИИ в своём бизнесе</div><span class="lesson-time">13:10 – 14:00</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Карта бизнес-задач через модель 5P</li><li>Ключевые блоки: продукт, продвижение, клиенты</li><li>Какие процессы уже сейчас можно передать ИИ</li></ul><div class="practice-box"><strong>Практика:</strong> собираем карту задач по готовому промпту</div></div></div>
-      <div class="lesson anim d4" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">4</div><div class="lesson-title">Как получать от ИИ нормальные результаты</div><span class="lesson-time">14:10 – 15:00</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Что такое промпт и почему «сделай красиво» не работает</li><li>Структура сильного запроса: роль, контекст, задача, формат</li></ul><div class="practice-box"><strong>Практика:</strong> создаём рабочий промпт под свою задачу</div></div></div>
+      <div class="lesson anim d1" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">1</div><div class="lesson-title">Нейросети для бизнеса: с чего начать</div><span class="lesson-time">11:00–11:50</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Что такое нейросети — простыми словами</li><li>Почему ИИ — помощник, а не «волшебная кнопка»</li><li>Как ИИ помогает малому бизнесу: контент, маркетинг, анализ</li></ul><div class="practice-box"><strong>Практика:</strong> анкета о вашем бизнесе и задачах</div></div></div>
+      <div class="lesson anim d2" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">2</div><div class="lesson-title">Выбираем и настраиваем ИИ</div><span class="lesson-time">12:00–12:50</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Какие сервисы работают в России — бесплатные и платные</li><li>Настройка 2 нейросетей на выбор</li></ul><div class="practice-box"><strong>Практика:</strong> настраиваем инструменты под свои задачи</div></div></div>
+      <div class="lesson anim d3" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">3</div><div class="lesson-title">Как найти задачи для ИИ в своём бизнесе</div><span class="lesson-time">13:10–14:00</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Карта бизнес-задач через модель 5P</li><li>Что уже сейчас можно передать ИИ</li></ul><div class="practice-box"><strong>Практика:</strong> собираем карту задач по готовому промпту</div></div></div>
+      <div class="lesson anim d4" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">4</div><div class="lesson-title">Как получать от ИИ нормальные результаты</div><span class="lesson-time">14:10–15:00</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Структура сильного промпта: роль, контекст, задача, формат</li></ul><div class="practice-box"><strong>Практика:</strong> создаём рабочий промпт под свою задачу</div></div></div>
       <div class="day-outcome active" id="out1"><h4>Итог дня 1</h4><div class="chips"><span class="chip">Список рабочих нейросетей</span><span class="chip">Настроенные инструменты</span><span class="chip">Карта задач для ИИ</span><span class="chip">Первые рабочие промпты</span></div></div>
     </div>
     <div class="day-panel" id="day2">
-      <div class="lesson anim d1" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">5</div><div class="lesson-title">Разбор домашнего задания и улучшение результатов</div><span class="lesson-time">11:00 – 11:50</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Почему ИИ даёт слабые ответы — разбираем причины</li><li>Как уточнить запрос. Мета-промпт</li></ul><div class="practice-box"><strong>Практика:</strong> дорабатываем промпты по чек-листу</div></div></div>
-      <div class="lesson anim d2" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">6</div><div class="lesson-title">Создаём ИИ-помощника под свой бизнес</div><span class="lesson-time">12:00 – 12:50</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Полезные ассистенты: маркетолог, редактор, аналитик, SMM</li><li>Пишем инструкции, загружаем контекст бизнеса</li></ul><div class="practice-box"><strong>Практика:</strong> настраиваем помощника под рабочую задачу</div></div></div>
-      <div class="lesson anim d3" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">7</div><div class="lesson-title">Собираем готовый материал для бизнеса</div><span class="lesson-time">13:10 – 15:00</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Описание услуги, портрет клиента, план продвижения</li><li>Контент-план, оффер, скрипт общения</li></ul><div class="practice-box"><strong>Практика:</strong> собираем готовый материал для своего бизнеса</div></div></div>
-      <div class="day-outcome active" id="out2"><h4>Итог практикума</h4><div class="chips"><span class="chip">Карта задач бизнеса для ИИ</span><span class="chip">Настроенный ИИ-помощник</span><span class="chip">Готовый бизнес-материал</span><span class="chip">Умение составлять промпты</span><span class="chip">Шаблоны и инструкции</span></div></div>
+      <div class="lesson anim d1" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">5</div><div class="lesson-title">Разбор домашнего задания</div><span class="lesson-time">11:00–11:50</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Почему ИИ даёт слабые ответы и как это исправить</li><li>Мета-промпт для проверки результатов</li></ul><div class="practice-box"><strong>Практика:</strong> дорабатываем промпты по чек-листу</div></div></div>
+      <div class="lesson anim d2" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">6</div><div class="lesson-title">Создаём ИИ-помощника под свой бизнес</div><span class="lesson-time">12:00–12:50</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Маркетолог, редактор, аналитик, SMM-помощник</li><li>Пишем инструкции, загружаем контекст бизнеса</li></ul><div class="practice-box"><strong>Практика:</strong> настраиваем помощника под задачу</div></div></div>
+      <div class="lesson anim d3" onclick="toggleLesson(this)"><div class="lesson-hd"><div class="lesson-num">7</div><div class="lesson-title">Собираем готовый материал для бизнеса</div><span class="lesson-time">13:10–15:00</span><span class="lesson-arrow">▾</span></div><div class="lesson-body"><ul><li>Описание услуги, портрет клиента, контент-план</li><li>Оффер, коммерческое предложение, скрипт</li></ul><div class="practice-box"><strong>Практика:</strong> каждый собирает материал под свой бизнес</div></div></div>
+      <div class="day-outcome active" id="out2"><h4>Итог практикума</h4><div class="chips"><span class="chip">Карта задач для ИИ</span><span class="chip">Настроенный ИИ-помощник</span><span class="chip">Готовый бизнес-материал</span><span class="chip">Промпты и шаблоны</span></div></div>
     </div>
   </div>
 </section>
@@ -279,43 +325,14 @@ footer span{color:var(--f)}
 <footer>© 2026 <span>НейроПрактика</span> · Наталья Руцкая · Практикум по нейросетям для малого бизнеса</footer>
 
 <script>
-// Scroll анимации
-const io = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}
-  });
-},{threshold:0.12});
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('show');io.unobserve(x.target);}});},{threshold:0.12});
 document.querySelectorAll('.anim').forEach(el=>io.observe(el));
 
-// Счётчики цифр
-function countUp(el,target,dur=1400){
-  const s=performance.now();
-  const tick=t=>{
-    const p=Math.min((t-s)/dur,1);
-    const ease=1-Math.pow(1-p,3);
-    el.textContent=Math.floor(ease*target);
-    if(p<1)requestAnimationFrame(tick);
-    else el.textContent=target;
-  };
-  requestAnimationFrame(tick);
-}
-
-const cio=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      countUp(e.target,+e.target.dataset.target);
-      cio.unobserve(e.target);
-    }
-  });
-},{threshold:0.5});
+const cio=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){countUp(x.target,+x.target.dataset.target);cio.unobserve(x.target);}});},{threshold:0.5});
+function countUp(el,t,d=1400){const s=performance.now();const f=n=>{const p=Math.min((n-s)/d,1),e=1-Math.pow(1-p,3);el.textContent=Math.floor(e*t);if(p<1)requestAnimationFrame(f);else el.textContent=t;};requestAnimationFrame(f);}
 document.querySelectorAll('.count').forEach(el=>{el.textContent='0';cio.observe(el);});
 
-// Вкладки программы
-function switchDay(n){
-  document.querySelectorAll('.day-tab').forEach((t,i)=>t.classList.toggle('active',i===n-1));
-  document.querySelectorAll('.day-panel').forEach((p,i)=>p.classList.toggle('active',i===n-1));
-  document.querySelectorAll('.day-outcome').forEach((o,i)=>o.classList.toggle('active',i===n-1));
-}
+function switchDay(n){document.querySelectorAll('.day-tab').forEach((t,i)=>t.classList.toggle('active',i===n-1));document.querySelectorAll('.day-panel').forEach((p,i)=>p.classList.toggle('active',i===n-1));document.querySelectorAll('.day-outcome').forEach((o,i)=>o.classList.toggle('active',i===n-1));}
 function toggleLesson(el){el.classList.toggle('open');}
 </script>
 </body>
